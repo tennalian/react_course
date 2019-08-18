@@ -3,28 +3,27 @@ import React, { Component as ReactComponent } from 'react';
 
 export default (OriginalComponent) => class DecoratedComponent extends ReactComponent  {
   state = {
-    openItemId: null
+    openItemId: null,
+    openItemCommentId: null
   }
 
   render() {
-    return <OriginalComponent
-      {...this.props}
-      openItemId = {this.state.openItemId}
-      toggleItem = {this.toggleItem}
-    />
+    return (
+      <OriginalComponent
+        {...this.props}
+        {...this.state}
+        toggleComment = {this.toggleComment}
+        toggleItem = {this.toggleItem}/>
+    )
   }
-
-  // всегда возвращает новую функцию с новой ссылкой,
-  // все дочерние компоненты из-за него перерендерятся
-  //
-  // toggleItem = (id) => () => this.setState({
-  //   openItemId: this.state.openItemId === id ? null : id
-  // });
 
   toggleItem = (id) => this.setState({
     openItemId: this.state.openItemId === id ? null : id
   });
 
-  isOpen = (id) => id === this.state.openItemId;
+  toggleComment = (id) => this.setState({
+    openItemCommentId: this.state.openItemCommentId === id ? null : id
+  });
+
 
 }

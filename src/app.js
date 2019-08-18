@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import Select from 'react-select';
 import DayPicker from 'react-day-picker';
-import 'react-day-picker/lib/style.css';
 
 import ArticleList from './components/article-list';
 import ArticlesChart from './components/articles-chart';
 import UserForm from './components/user-form';
-import './app.scss'
+import './styles.scss'
+import 'react-day-picker/lib/style.css'
 
 import {normalizedArticles} from './fixtures';
 
